@@ -1,12 +1,10 @@
 const getCine = async () => {
-    const id = new URLSearchParams(window.location.search).get('id') || '1'; // usa id=1 si no hay parámetro
-
+    const id = new URLSearchParams(window.location.search).get('id');
     const response = await fetch(`https://oaemdl.es/cinestar_sweb_php/cines/${id}`);
 
     if (response.status === 200) {
         const result = await response.json();
-        const cine = result.data; // <-- es un objeto, no un array
-
+        const cine = result.data; 
         let html = '<br/><h1>Nuestro Cine</h1><br/>';
         html += `
            	<h2>${cine.RazonSocial}</h2>
